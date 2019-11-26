@@ -3,14 +3,14 @@ Here is one possible imagined language layout.
 */
 
 
-numb3r num1:
-num1=1+2:
-str1ng stg:
-b0ol bool1:
-bool1=0:
-stg = inLine:
-out[Hello World!/n]:
-if stg is [coolbeans] ; out[Coolest beans/n]:
+numb3r num1 :
+num1 = 1 + 2 :
+str1ng stg :
+b0ol bool1 :
+bool1 = 0 :
+stg = inLine :
+out [ Hello World! ] :
+if stg is [ coolbeans ] ; out [ Coolest beans ]:
 
 out num1:
 out bool1:

@@ -1,15 +1,3 @@
-/*public class Lexer
-{
-
-  public static void main (String[] arg){
-
-    
-    
-    
-    
-  }
-}*/
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -23,31 +11,51 @@ import java.util.Scanner;
  */
 public class Lexer {
   
-  public static void main(String args[]) throws FileNotFoundException{
-  reader(); 
-  
-  
-  
-  
+  public static String[] main(String fileName){
+      String read = reader(fileName);
+      read = read.toLowerCase();
+      read = read.trim();
+      String[] readArray = read.split(" ");
+      String[] lexed = new String[readArray.length *2];
+      int arrayCount = 0;
+      for (int i = 0; i < readArray.length-1;i+=1){
+        switch (readArray[i]){
+            case "numb3r":
+                lexed[arrayCount] = "int";
+                lexed[arrayCount+1] = readArray[i]; 
+                break;
+            default:
+                lexed[arrayCount] = "id";
+                lexed[arrayCount+1] = readArray[i]; 
+        }
+        arrayCount += 2;
+    }
+    
+    return lexed;
+
+
   }
 
-    public static String reader()throws FileNotFoundException {
+    public static String reader(String fileName) {
+  
+    String temp = "";
+    try {
+      Scanner input = new Scanner(new File(fileName));
+      
+      //add 'words' in the file to the string, separated by a single space
+      while(input.hasNext()){
+        temp = temp + input.next() + " ";
+      }
+      input.close();
+      
+    }
+    catch(Exception e){
+      System.out.println("Unable to locate " + fileName);
+    }
+    //make sure to remove any additional space that may have been added at the end of the string.
+    return temp.trim();
+  
+
  
-        //creating File instance to reference text file in Java
-        File text = new File("text.txt");
-     
-        //Creating Scanner instnace to read File in Java
-        Scanner scnr = new Scanner(text);
-     
-        //Reading each line of file using Scanner class
-        int lineNumber = 1;
-        while(scnr.hasNextLine()){
-            String line = scnr.nextLine();
-            System.out.println("line " + lineNumber + " :" + line);
-            lineNumber++;
-        }      
-   
-    return "";
-    }  
- 
+}
 }
